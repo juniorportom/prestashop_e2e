@@ -1,0 +1,15 @@
+describe('Registro Prestashop', function() {
+    it('Ingresar formulario pagina de registro', function() {
+        cy.visit('http://ec2-18-222-141-129.us-east-2.compute.amazonaws.com:8080/admin428l2esux')
+        cy.get('.front_login').find('input[name="email"]').click().type("tsdc.agile.test@gmail.com")
+        cy.get('.front_login').find('input[name="passwd"]').click().type("GrupoAgiles")
+        cy.get('.front_login').find('button[name="submitLogin"]').click()
+        cy.get('.js-mobile-menu').click()
+        cy.get('.link').contains('Catálogo').click()
+        cy.get('.link').contains('Productos').click()
+        cy.contains('Productos')
+        cy.get('.js-mobile-menu').click()
+        cy.get('.link-levelone').contains('Cerrar sesión').click()
+        cy.contains('PrestaShop')
+    })
+})
