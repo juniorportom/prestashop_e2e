@@ -1,0 +1,18 @@
+describe('Registro Prestashop', function() {
+    it('Ingresar formulario pagina de registro', function() {
+        cy.visit('http://ec2-18-222-141-129.us-east-2.compute.amazonaws.com:8080/es/')
+        cy.contains('Iniciar sesión').click()
+        cy.contains('¿No tiene una cuenta? Cree una aquí').click()
+        cy.get('.register-form').find('input[type="radio"]').first().click()
+        cy.get('.register-form').find('input[name="firstname"]').click().type("Reinaldo")
+        cy.get('.register-form').find('input[name="lastname"]').click().type("Portocarrero")
+        cy.get('.register-form').find('input[name="email"]').click().type("prueba@prueba.com")
+        cy.get('.register-form').find('input[name="password"]').click().type("12345678")
+        cy.get('.register-form').find('input[name="birthday"]').click().type("17/12/1987")
+        cy.get('.register-form').find('input[name="optin"]').click()
+        cy.get('.register-form').find('input[name="newsletter"]').click()
+        cy.get('.register-form').find('input[name="newsletter"]').click()
+        cy.get('.register-form').contains('Guardar').click()
+        cy.contains('La dirección de correo electrónico ya está en uso, por favor, elige otra o inicia sesión')
+    })
+})
