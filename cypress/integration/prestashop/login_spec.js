@@ -6,5 +6,6 @@ describe('Registro Prestashop', function() {
         cy.get('.login-form').find('input[name="password"]').click().type("12345678")
         cy.get('.login-form').contains('Iniciar sesión').click()
         cy.contains('Cerrar sesión').click()
+        cy.contains('Iniciar sesión con su cuenta')
     })
 })
